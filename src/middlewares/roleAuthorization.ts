@@ -23,7 +23,10 @@ const roleAuthorization = (requiredRole: string) => {
 
       // Validar el rol del usuario
       if (user.roleId !== requiredRole) {
-        throw new HttpError(`Permiso denegado. Se requiere el rol: ${requiredRole}`, 403)
+        throw new HttpError(
+          `Permiso denegado. Se requiere el rol: ${requiredRole}`,
+          403,
+        )
       }
 
       next()

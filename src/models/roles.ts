@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import sequelize from '@config/database'
 import { RolesAttributes } from '@type/roles'
 import { v4 as uuid } from 'uuid'
+import User from '@models/user'
 
 class Roles
   extends Model<RolesAttributes, Optional<RolesAttributes, 'id'>>
@@ -24,5 +25,7 @@ Roles.init(
     timestamps: true,
   },
 )
+// Relación inversa
+Roles.hasMany(User, { foreignKey: 'roleId', as: 'users' })
 
 export default Roles

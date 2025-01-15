@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import sequelize from '@config/database'
 import { UserAttributes } from '@type/auth'
 import { v4 as uuid } from 'uuid'
+import Roles from '@models/roles'
 
 class User
   extends Model<
@@ -49,5 +50,7 @@ User.init(
     timestamps: true,
   },
 )
+// Relación con Roles
+User.belongsTo(Roles, { foreignKey: 'roleId', as: 'role' })
 
 export default User

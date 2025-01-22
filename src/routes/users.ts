@@ -14,6 +14,8 @@ router.get('/:id', authorization, userController.getUser)
 
 router.put('/:id', authorization, userController.deleteUser)
 
+router.delete('/:id', authorization, userController.destroyUser)
+
 router.patch('/:id', authorization, userController.updateUser)
 
 export default router

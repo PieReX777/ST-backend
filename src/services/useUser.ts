@@ -102,6 +102,16 @@ class useUser {
     return { message: 'Usuario eliminado correctamente' }
   }
 
+  static async destroyUser(id: string) {
+    const user = await User.findByPk(id)
+    if (!user) {
+      return null
+    }
+
+    await user.destroy()
+    return { message: 'Usuario eliminado correctamente' }
+  }
+
   static async updateUser(id: string, body: Partial<UserAttributes>) {
     const validation = userValidationPartial(body)
     if (!validation.success) {

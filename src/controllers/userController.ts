@@ -64,6 +64,17 @@ class userController {
     }
   }
 
+  static async destroyUser(req: Request, res: Response) {
+    try {
+      const userId = req.params.id
+      await useUser.destroyUser(userId)
+      res.json({ message: 'Usuario eliminado' })
+    } catch (error) {
+      console.error('Error al eliminar usuario:', error)
+      res.status(500).json({ message: 'Error al eliminar usuario' })
+    }
+  }
+
   static async updateUser(req: Request, res: Response) {
     try {
       const user = await useUser.updateUser(req.params.id, req.body) // Usa await aquí
